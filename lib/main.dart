@@ -13,7 +13,7 @@ class MainApp extends StatelessWidget {
     return const MaterialApp(
      title: "Empeo App Clone",
      debugShowCheckedModeBanner: false,
-     home:InvitePage()
+     home: InvitePage()
     );
   }
 }
