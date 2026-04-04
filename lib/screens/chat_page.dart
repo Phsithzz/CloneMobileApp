@@ -1,3 +1,4 @@
+import 'package:clone_mobile_app/data/chat_page_data.dart';
 import 'package:flutter/material.dart';
 
 class ChatPage extends StatelessWidget {
@@ -53,23 +54,24 @@ class ChatPage extends StatelessWidget {
                       height: 80,
                       child: ListView.separated(
                         scrollDirection: Axis.horizontal,
-                        itemCount: 5,
+                        itemCount: users.length,
                         separatorBuilder: (_, __) => const SizedBox(width: 12),
                         itemBuilder: (context, index) {
+                          final user = users[index];
                           return Column(
                             children: [
-                              const CircleAvatar(radius: 28),
-                              const SizedBox(height: 6),
-                              const Text(
-                                "User",
-                                style: TextStyle(fontSize: 12),
+                              CircleAvatar(
+                                backgroundImage: AssetImage(user.image),
+                                radius: 28,
                               ),
+                              const SizedBox(height: 6),
+                              Text(user.name, style: TextStyle(fontSize: 12)),
                             ],
                           );
                         },
                       ),
                     ),
-
+                    const SizedBox(height: 20),
                     const Text(
                       "Own Team",
                       style: TextStyle(
@@ -79,22 +81,26 @@ class ChatPage extends StatelessWidget {
                     ),
                     const SizedBox(height: 10),
                     ListView.separated(
-                      itemCount: 5,
+                      itemCount: users.length,
                       shrinkWrap: true,
                       physics: NeverScrollableScrollPhysics(),
-                      separatorBuilder: (_, __) => const Divider(),
+                      separatorBuilder: (_, __) => const SizedBox(),
                       itemBuilder: (context, index) {
+                        final user = users[index];
                         return ListTile(
-                          leading: const CircleAvatar(),
-                          title: Text("User $index"),
-                          subtitle: const Text("Software Engineer"),
-                          trailing: const Icon(Icons.chevron_right),
+                          contentPadding: EdgeInsets.zero,
+                          leading: CircleAvatar(
+                            backgroundImage: AssetImage(user.image),
+                          ),
+                          title: Text(user.name),
+                          subtitle: Text(user.role),
                         );
                       },
                     ),
                   ],
                 ),
               ),
+    
             ],
           ),
         ),
