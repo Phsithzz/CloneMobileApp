@@ -1,4 +1,3 @@
-import 'package:clone_mobile_app/screens/chat_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,7 +12,7 @@ class MainApp extends StatelessWidget {
     return const MaterialApp(
      title: "Empeo App Clone",
      debugShowCheckedModeBanner: false,
-     home: ChatPage()
+    //  home: 
     );
   }
 }
