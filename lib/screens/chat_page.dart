@@ -92,15 +92,23 @@ class ChatPage extends StatelessWidget {
                           leading: CircleAvatar(
                             backgroundImage: AssetImage(user.image),
                           ),
-                          title: Text(user.name),
-                          subtitle: Text(user.role),
+                          title: Text(
+                            "${user.name} ${user.lastname}",
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          subtitle: Text(
+                            user.role,
+                            style: TextStyle(fontSize: 12),
+                          ),
                         );
                       },
                     ),
                   ],
                 ),
               ),
-    
             ],
           ),
         ),
