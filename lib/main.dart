@@ -1,4 +1,3 @@
-import 'package:clone_mobile_app/screens/bottom_nav_page.dart';
 import 'package:clone_mobile_app/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +15,7 @@ class MainApp extends StatelessWidget {
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
       debugShowCheckedModeBanner: false,
-       home:BottomNavPage()
+      //  home:
     );
   }
 }
