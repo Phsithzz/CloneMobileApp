@@ -1,3 +1,4 @@
+import 'package:clone_mobile_app/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,10 +10,12 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-     title: "Empeo App Clone",
-     debugShowCheckedModeBanner: false,
-    //  home:
+    return MaterialApp(
+      title: "Empeo App Clone",
+      theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
+      debugShowCheckedModeBanner: false,
+      //  home:
     );
   }
 }
