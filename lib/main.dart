@@ -1,3 +1,4 @@
+import 'package:clone_mobile_app/screens/pin_page.dart';
 import 'package:clone_mobile_app/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
