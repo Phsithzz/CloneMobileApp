@@ -1,3 +1,4 @@
+import 'package:clone_mobile_app/screens/calenda_page.dart';
 import 'package:clone_mobile_app/screens/chat_page.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +14,7 @@ class _BottomNavPageState extends State<BottomNavPage> {
 
   final List<Widget> _pages = [
     const Center(child: Text('Home Page')),
-    const Center(child: Text("Calenda Page")),
+    const CalendarPage(),
     const Center(child: Text("Group Page")),
     const ChatPage(),
     const Center(child: Text('Notifications Page')),
