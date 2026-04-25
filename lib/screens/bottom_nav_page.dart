@@ -1,4 +1,4 @@
-import 'package:clone_mobile_app/screens/calenda_page.dart';
+import 'package:clone_mobile_app/screens/calendar_page.dart';
 import 'package:clone_mobile_app/screens/chat_page.dart';
 import 'package:flutter/material.dart';
 

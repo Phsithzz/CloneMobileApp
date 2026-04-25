@@ -1,3 +1,4 @@
+import 'package:clone_mobile_app/screens/login_page.dart';
 import 'package:flutter/material.dart';
 
 class InvitePage extends StatelessWidget {
@@ -13,9 +14,9 @@ class InvitePage extends StatelessWidget {
           padding: const EdgeInsets.all(24.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
-        
+
             children: [
-               Align(
+              Align(
                 alignment: Alignment.topRight,
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
@@ -31,14 +32,14 @@ class InvitePage extends StatelessWidget {
                 height: 200,
                 fit: BoxFit.cover,
               ),
-        
+
               const Text(
                 "Please fill in the Invitation Code Provided by your \n administrator to access empeo within your company.",
                 style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 36),
-        
+
               SizedBox(
                 width: double.infinity,
                 height: 40,
@@ -48,7 +49,7 @@ class InvitePage extends StatelessWidget {
                     fillColor: Colors.white,
                     hintText: "Invitation Code",
                     hintStyle: TextStyle(fontSize: 14, color: Colors.grey[400]),
-        
+
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(6),
                       borderSide: const BorderSide(
@@ -78,12 +79,17 @@ class InvitePage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 24),
-        
+
               SizedBox(
                 width: double.infinity,
                 height: 42,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (_) => const LoginPage()),
+                    );
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xffF45B26),
                     shape: RoundedRectangleBorder(
@@ -103,7 +109,12 @@ class InvitePage extends StatelessWidget {
               ),
               const SizedBox(height: 8),
               TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => const LoginPage()),
+                  );
+                },
                 child: Text(
                   "Skip",
                   style: TextStyle(

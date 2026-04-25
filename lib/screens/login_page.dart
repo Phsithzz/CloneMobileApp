@@ -1,3 +1,4 @@
+import 'package:clone_mobile_app/screens/pin_page.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
@@ -154,7 +155,14 @@ class LoginPage extends StatelessWidget {
                           width: double.infinity,
                           height: 42,
                           child: ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) => const PinPage(),
+                                ),
+                              );
+                            },
                             style: ElevatedButton.styleFrom(
                               backgroundColor: const Color(0xffF45B26),
                               shape: RoundedRectangleBorder(
