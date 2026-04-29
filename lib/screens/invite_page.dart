@@ -1,3 +1,4 @@
+import 'package:clone_mobile_app/screens/colors/invite_color.dart';
 import 'package:clone_mobile_app/screens/login_page.dart';
 import 'package:flutter/material.dart';
 
@@ -71,7 +72,7 @@ class _InvitePageState extends State<InvitePage> {
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(6),
                     borderSide: const BorderSide(
-                      color: Color.fromARGB(255, 209, 208, 208),
+                      color: InviteColors.border,
                       width: 1.5,
                     ),
                   ),
@@ -79,7 +80,7 @@ class _InvitePageState extends State<InvitePage> {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(6),
                     borderSide: const BorderSide(
-                      color: Color.fromARGB(255, 209, 208, 208),
+                      color: InviteColors.border,
                       width: 1.5,
                     ),
                   ),
@@ -87,7 +88,7 @@ class _InvitePageState extends State<InvitePage> {
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(6),
                     borderSide: const BorderSide(
-                      color: Color(0xffF45B26),
+                      color: InviteColors.primary,
                       width: 2,
                     ),
                   ),
@@ -111,7 +112,7 @@ class _InvitePageState extends State<InvitePage> {
                   },
 
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xffF45B26),
+                    backgroundColor: InviteColors.primary,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
@@ -140,7 +141,7 @@ class _InvitePageState extends State<InvitePage> {
                   "Skip",
                   style: TextStyle(
                     fontSize: 14,
-                    color: const Color(0xffF45B26),
+                    color: InviteColors.primary,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
