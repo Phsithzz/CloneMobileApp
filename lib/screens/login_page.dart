@@ -1,8 +1,53 @@
+import 'package:clone_mobile_app/components/social_button.dart';
+import 'package:clone_mobile_app/screens/colors/login_color.dart';
+import 'package:clone_mobile_app/screens/invite_page.dart';
 import 'package:clone_mobile_app/screens/pin_page.dart';
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  bool _isPasswordVisible = false;
+
+  void navigateToInvite() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (_) => const InvitePage()),
+    );
+  }
+
+  void navigateToPin() {
+    Navigator.push(context, MaterialPageRoute(builder: (_) => const PinPage()));
+  }
+
+  void _onLogin() {
+    final email = _emailController.text.trim();
+    final password = _passwordController.text.trim();
+
+    if (email.isEmpty || password.isEmpty) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text("Please fill all fields")));
+      return;
+    }
+
+    navigateToPin();
+  }
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -14,20 +59,29 @@ class LoginPage extends StatelessWidget {
           builder: (context, constraints) {
             return SingleChildScrollView(
               padding: const EdgeInsets.all(24),
+
               child: ConstrainedBox(
                 constraints: BoxConstraints(minHeight: constraints.maxHeight),
+
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
                   children: [
                     Column(
                       children: [
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
                           children: [
-                            Icon(
-                              Icons.arrow_back_ios,
-                              color: Color(0xffF45B26),
+                            IconButton(
+                              onPressed: () {
+                                navigateToInvite();
+                              },
+
+                              icon: Icon(Icons.arrow_back_ios),
+                              color: LoginColor.primary,
                             ),
+
                             Row(
                               children: [
                                 Image.asset(
@@ -35,18 +89,22 @@ class LoginPage extends StatelessWidget {
                                   width: 30,
                                   height: 30,
                                 ),
+
                                 const SizedBox(width: 4),
+
                                 Image.asset(
                                   "assets/images/language.jpg",
-                                  width: 30,
-                                  height: 30,
+                                  width: 28,
+                                  height: 28,
                                 ),
+
                                 const SizedBox(width: 4),
 
                                 Icon(
                                   Icons.keyboard_arrow_down,
                                   color: Colors.blueGrey[300],
                                 ),
+
                                 const SizedBox(width: 4),
                               ],
                             ),
@@ -55,13 +113,14 @@ class LoginPage extends StatelessWidget {
 
                         Image.asset(
                           "assets/images/logo.jpg",
-
                           height: 200,
                           fit: BoxFit.contain,
                         ),
 
                         TextField(
+                          controller: _emailController,
                           keyboardType: TextInputType.emailAddress,
+
                           decoration: InputDecoration(
                             filled: true,
                             fillColor: Colors.white,
@@ -74,21 +133,23 @@ class LoginPage extends StatelessWidget {
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(6),
                               borderSide: const BorderSide(
-                                color: Color.fromARGB(255, 209, 208, 208),
+                                color: LoginColor.border,
                                 width: 1.5,
                               ),
                             ),
+
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(6),
                               borderSide: const BorderSide(
-                                color: Color.fromARGB(255, 209, 208, 208),
+                                color: LoginColor.border,
                                 width: 1.5,
                               ),
                             ),
+
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(6),
                               borderSide: const BorderSide(
-                                color: Color(0xffF45B26),
+                                color: LoginColor.primary,
                                 width: 2,
                               ),
                             ),
@@ -97,43 +158,58 @@ class LoginPage extends StatelessWidget {
                             ),
                           ),
                         ),
+
                         const SizedBox(height: 20),
+
                         TextField(
-                          obscureText: true,
+                          controller: _passwordController,
+                          obscureText: !_isPasswordVisible,
+
                           decoration: InputDecoration(
                             filled: true,
                             fillColor: Colors.white,
-
                             hintText: "Password",
                             hintStyle: TextStyle(
                               fontSize: 14,
                               color: Colors.grey[400],
                             ),
-                            suffixIcon: Icon(
-                              Icons.visibility,
-                              color: Color.fromARGB(255, 209, 208, 208),
+                            suffixIcon: IconButton(
+                              icon: Icon(
+                                _isPasswordVisible
+                                    ? Icons.visibility
+                                    : Icons.visibility_off,
+                              ),
+                              onPressed: () {
+                                setState(() {
+                                  _isPasswordVisible = !_isPasswordVisible;
+                                });
+                              },
                             ),
+
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(6),
                               borderSide: const BorderSide(
-                                color: Color.fromARGB(255, 209, 208, 208),
+                                color: LoginColor.border,
                                 width: 1.5,
                               ),
                             ),
+
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(6),
                               borderSide: const BorderSide(
-                                color: Color.fromARGB(255, 209, 208, 208),
+                                color: LoginColor.border,
                                 width: 1.5,
                               ),
                             ),
+
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(6),
                               borderSide: const BorderSide(
-                                color: Color(0xffF45B26),
+                                color: LoginColor.primary,
                                 width: 2,
                               ),
                             ),
+
                             contentPadding: const EdgeInsets.symmetric(
                               horizontal: 16,
                             ),
@@ -146,30 +222,30 @@ class LoginPage extends StatelessWidget {
                             onPressed: () {},
                             child: const Text(
                               "Forgot password?",
-                              style: TextStyle(color: Color(0xffF45B26)),
+                              style: TextStyle(color: LoginColor.primary),
                             ),
                           ),
                         ),
+
                         const SizedBox(height: 10),
+
                         SizedBox(
                           width: double.infinity,
                           height: 42,
+
                           child: ElevatedButton(
                             onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (_) => const PinPage(),
-                                ),
-                              );
+                              _onLogin();
                             },
+
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: const Color(0xffF45B26),
+                              backgroundColor: LoginColor.primary,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(8),
                               ),
                               elevation: 0,
                             ),
+
                             child: Text(
                               "Sign in",
                               style: TextStyle(
@@ -180,17 +256,21 @@ class LoginPage extends StatelessWidget {
                             ),
                           ),
                         ),
+
                         const SizedBox(height: 20),
+
                         Row(
                           children: [
                             Expanded(
                               child: Divider(
                                 thickness: 2,
-                                color: Color.fromARGB(255, 233, 230, 230),
+                                color: LoginColor.border,
                               ),
                             ),
+
                             Padding(
                               padding: const EdgeInsets.all(8.0),
+
                               child: Text(
                                 "or continue with",
                                 style: TextStyle(
@@ -199,10 +279,11 @@ class LoginPage extends StatelessWidget {
                                 ),
                               ),
                             ),
+
                             Expanded(
                               child: Divider(
                                 thickness: 2,
-                                color: Color.fromARGB(255, 233, 230, 230),
+                                color: LoginColor.border,
                               ),
                             ),
                           ],
@@ -212,77 +293,18 @@ class LoginPage extends StatelessWidget {
 
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Container(
-                              width: 50,
-                              height: 50,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Colors.white,
-                                border: Border.all(
-                                  color: Colors.grey[300]!,
-                                  width: 1,
-                                ),
-                              ),
-                              child: Center(
-                                child: SizedBox(
-                                  width: 26,
-                                  height: 26,
-                                  child: Image.asset(
-                                    "assets/images/google.jpg",
-                                    fit: BoxFit.contain,
-                                  ),
-                                ),
-                              ),
-                            ),
 
-                            const SizedBox(width: 14),
-                            Container(
-                              width: 50,
-                              height: 50,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Colors.white,
-                                border: Border.all(
-                                  color: Colors.grey[300]!,
-                                  width: 1,
-                                ),
-                              ),
-                              child: Center(
-                                child: SizedBox(
-                                  width: 26,
-                                  height: 26,
-                                  child: Image.asset(
-                                    "assets/images/office.png",
-                                    fit: BoxFit.contain,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            const SizedBox(width: 14),
-                            Container(
-                              width: 50,
-                              height: 50,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Colors.white,
-                                border: Border.all(
-                                  color: Colors.grey[300]!,
-                                  width: 1,
-                                ),
-                              ),
-                              child: Center(
-                                child: SizedBox(
-                                  width: 26,
-                                  height: 26,
-                                  child: Image.asset(
-                                    "assets/images/facebook.jpg",
-                                    fit: BoxFit.contain,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            const SizedBox(width: 14),
+                          children: [
+                            SocialButton(image: "assets/images/google.jpg"),
+
+                            SizedBox(width: 14),
+
+                            SocialButton(image: "assets/images/office.png"),
+                            SizedBox(width: 14),
+
+                            SocialButton(image: "assets/images/facebook.jpg"),
+                            SizedBox(width: 14),
+
                             Container(
                               width: 50,
                               height: 50,
@@ -333,6 +355,7 @@ class LoginPage extends StatelessWidget {
                             fontSize: 12,
                           ),
                         ),
+
                         const SizedBox(height: 60),
                       ],
                     ),
