@@ -16,9 +16,8 @@ class _InvitePageState extends State<InvitePage> {
     final code = _codeController.text.trim();
 
     if (code.isEmpty) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(const SnackBar(content: Text("Please fill all fields")));
+      _showMessage("Please fill all fields");
+
       return;
     }
     _navigateToLogin();
@@ -29,6 +28,12 @@ class _InvitePageState extends State<InvitePage> {
       context,
       MaterialPageRoute(builder: (_) => const LoginPage()),
     );
+  }
+
+  void _showMessage(String message) {
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(SnackBar(content: Text(message)));
   }
 
   @override
@@ -128,7 +133,6 @@ class _InvitePageState extends State<InvitePage> {
                   onPressed: () {
                     _onConfirm();
                   },
-
                   style: ElevatedButton.styleFrom(
                     backgroundColor: InviteColors.primary,
                     shape: RoundedRectangleBorder(

@@ -17,14 +17,14 @@ class _LoginPageState extends State<LoginPage> {
 
   bool _isPasswordVisible = false;
 
-  void navigateToInvite() {
+  void _navigateToInvite() {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (_) => const InvitePage()),
     );
   }
 
-  void navigateToPin() {
+  void _navigateToPin() {
     Navigator.push(context, MaterialPageRoute(builder: (_) => const PinPage()));
   }
 
@@ -33,13 +33,24 @@ class _LoginPageState extends State<LoginPage> {
     final password = _passwordController.text.trim();
 
     if (email.isEmpty || password.isEmpty) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(const SnackBar(content: Text("Please fill all fields")));
+      _showMessage("Please fill all fields");
       return;
     }
 
-    navigateToPin();
+    const mockEmail = "intern@gofive.com";
+    const mockPassword = "1234";
+
+    if (email == mockEmail && password == mockPassword) {
+      _navigateToPin();
+    } else {
+      _showMessage("Wrong Input");
+    }
+  }
+
+  void _showMessage(String message) {
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(SnackBar(content: Text(message)));
   }
 
   @override
@@ -74,10 +85,7 @@ class _LoginPageState extends State<LoginPage> {
 
                           children: [
                             IconButton(
-                              onPressed: () {
-                                navigateToInvite();
-                              },
-
+                              onPressed: _navigateToInvite,
                               icon: Icon(Icons.arrow_back_ios),
                               color: LoginColor.primary,
                             ),
