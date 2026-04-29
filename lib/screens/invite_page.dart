@@ -10,13 +10,31 @@ class InvitePage extends StatefulWidget {
 }
 
 class _InvitePageState extends State<InvitePage> {
-  final TextEditingController codeController = TextEditingController();
+  final TextEditingController _codeController = TextEditingController();
 
-  void navigateToLogin() {
+  void _onConfirm() {
+    final code = _codeController.text.trim();
+
+    if (code.isEmpty) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text("Please fill all fields")));
+      return;
+    }
+    _navigateToLogin();
+  }
+
+  void _navigateToLogin() {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (_) => const LoginPage()),
     );
+  }
+
+  @override
+  void dispose() {
+    _codeController.dispose();
+    super.dispose();
   }
 
   @override
@@ -62,7 +80,7 @@ class _InvitePageState extends State<InvitePage> {
               const SizedBox(height: 36),
 
               TextField(
-                controller: codeController,
+                controller: _codeController,
                 decoration: InputDecoration(
                   filled: true,
                   fillColor: Colors.white,
@@ -108,7 +126,7 @@ class _InvitePageState extends State<InvitePage> {
 
                 child: ElevatedButton(
                   onPressed: () {
-                    navigateToLogin();
+                    _onConfirm();
                   },
 
                   style: ElevatedButton.styleFrom(
@@ -134,7 +152,7 @@ class _InvitePageState extends State<InvitePage> {
 
               TextButton(
                 onPressed: () {
-                  navigateToLogin();
+                  _navigateToLogin();
                 },
 
                 child: Text(
