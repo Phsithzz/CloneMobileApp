@@ -1,5 +1,4 @@
-import 'package:clone_mobile_app/bloc/calenda_bloc.dart';
-import 'package:clone_mobile_app/bloc/calenda_event.dart';
+import 'package:clone_mobile_app/bloc/calendar_bloc.dart';
 import 'package:clone_mobile_app/screens/invite_page.dart';
 import 'package:clone_mobile_app/theme/app_theme.dart';
 import 'package:clone_mobile_app/theme/theme_cubit.dart';
@@ -18,7 +17,7 @@ class MainApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => ThemeCubit()),
-        BlocProvider(create: (_) => CalendarBloc()..add(LoadMonthEvent(DateTime(2026, 1)))), 
+        BlocProvider(create: (_) => CalendarBloc()..add(LoadMonthEvent(year: 2026, month: 1))), 
       ],
       child: BlocBuilder<ThemeCubit, ThemeMode>(
         builder: (context, themeMode) {
