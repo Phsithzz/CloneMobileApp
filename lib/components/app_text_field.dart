@@ -1,4 +1,5 @@
-import 'package:clone_mobile_app/screens/colors/login_color.dart';
+
+import 'package:clone_mobile_app/screens/colors/home_color.dart';
 import 'package:flutter/material.dart';
 
 class AppTextField extends StatefulWidget {
@@ -31,14 +32,14 @@ class _AppTextFieldState extends State<AppTextField> {
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(6),
           borderSide: const BorderSide(
-            color: LoginColor.border,
+            color: HomeColor.border,
             width: 1.5,
           ),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(6),
           borderSide: const BorderSide(
-            color: LoginColor.primary,
+            color: HomeColor.primary,
             width: 2,
           ),
         ),

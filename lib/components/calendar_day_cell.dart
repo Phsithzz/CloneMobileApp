@@ -31,8 +31,8 @@ class CalendarDayCell extends StatelessWidget {
           : Colors.white;
     } else {
       bgColor = isCurrentMonth
-          ? shift!.color
-          : shift!.color.withOpacity(0.5);
+          ? shift.color
+          : shift.color.withValues(alpha:0.5);
     }
 
     final textColor = isOff
@@ -55,7 +55,7 @@ class CalendarDayCell extends StatelessWidget {
           boxShadow: isSelected
               ? [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.15),
+                    color: Colors.black.withValues(alpha:0.15),
                     blurRadius: 4,
                     offset: const Offset(0, 2),
                   )
@@ -78,7 +78,7 @@ class CalendarDayCell extends StatelessWidget {
                     decoration: isToday && !isSelected
                         ? BoxDecoration(
                             shape: BoxShape.circle,
-                            color: textColor.withOpacity(0.15),
+                            color: textColor.withValues(alpha:0.15),
                           )
                         : null,
                     alignment: Alignment.center,
@@ -91,7 +91,7 @@ class CalendarDayCell extends StatelessWidget {
                             : FontWeight.w500,
                         color: isCurrentMonth
                             ? textColor
-                            : textColor.withOpacity(0.4),
+                            : textColor.withValues(alpha:0.4),
                       ),
                     ),
                   ),
@@ -108,7 +108,7 @@ class CalendarDayCell extends StatelessWidget {
                   fontWeight: FontWeight.w700,
                   color: isCurrentMonth
                       ? textColor
-                      : textColor.withOpacity(0.4),
+                      : textColor.withValues(alpha:0.4),
                   letterSpacing: 0.3,
                 ),
               ),
@@ -179,6 +179,6 @@ class CalendarDayCell extends StatelessWidget {
         break;
     }
 
-    return Icon(icon, size: 8, color: iconColor.withOpacity(isCurrentMonth ? 1 : 0.5));
+    return Icon(icon, size: 8, color: iconColor.withValues(alpha: isCurrentMonth ? 1 : 0.5));
   }
 }
