@@ -4,7 +4,6 @@ import 'package:clone_mobile_app/components/calendar_day_panel.dart';
 import 'package:clone_mobile_app/components/calendar_weekday_header.dart';
 import 'package:clone_mobile_app/components/day_actions_bottom_sheet.dart';
 import 'package:clone_mobile_app/components/legend_bottom_sheet.dart';
-import 'package:clone_mobile_app/model/shift_model.dart';
 import 'package:clone_mobile_app/theme/theme_cubit.dart';
 import 'package:clone_mobile_app/utils/thai_date_util.dart';
 import 'package:flutter/material.dart';
@@ -47,36 +46,54 @@ class CalendarPage extends StatelessWidget {
   AppBar _buildAppBar(BuildContext context, CalendarState state) {
     return AppBar(
       centerTitle: true,
-      title: Text(
-        ThaiDateUtils.monthYearThai(state.year, state.month),
-        style: const TextStyle(fontWeight: FontWeight.bold),
-      ),
+      // title: Text(
+      //   ThaiDateUtils.monthYearThai(state.year, state.month),
+      //   style: const TextStyle(fontWeight: FontWeight.bold),
+      // ),
       actions: [
-        IconButton(
-          icon: Icon(
-            Theme.of(context).brightness == Brightness.dark
-                ? Icons.light_mode
-                : Icons.dark_mode,
+        Expanded(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              IconButton(
+                icon: Icon(
+                  Theme.of(context).brightness == Brightness.dark
+                      ? Icons.light_mode
+                      : Icons.dark_mode,
+                ),
+                onPressed: () => context.read<ThemeCubit>().toggleTheme(),
+              ),
+              Row(
+                children: [
+                  IconButton(
+                    icon: const Icon(Icons.chevron_left),
+                    onPressed: () => context.read<CalendarBloc>().add(
+                      const NavigateMonthEvent(-1),
+                    ),
+                  ),
+                  Text(
+                    ThaiDateUtils.monthYearThai(state.year, state.month),
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.chevron_right),
+                    onPressed: () => context.read<CalendarBloc>().add(
+                      const NavigateMonthEvent(1),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  IconButton(
+                    icon: const Icon(Icons.help_outline),
+                    onPressed: () => LegendBottomSheet.show(context),
+                  ),
+                  IconButton(icon: const Icon(Icons.add), onPressed: () {}),
+                ],
+              ),
+            ],
           ),
-          onPressed: () => context.read<ThemeCubit>().toggleTheme(),
-        ),
-        IconButton(
-          icon: const Icon(Icons.chevron_left),
-          onPressed: () =>
-              context.read<CalendarBloc>().add(const NavigateMonthEvent(-1)),
-        ),
-        IconButton(
-          icon: const Icon(Icons.chevron_right),
-          onPressed: () =>
-              context.read<CalendarBloc>().add(const NavigateMonthEvent(1)),
-        ),
-        IconButton(
-          icon: const Icon(Icons.help_outline),
-          onPressed: () => LegendBottomSheet.show(context),
-        ),
-        IconButton(
-          icon: const Icon(Icons.add),
-          onPressed: () {},
         ),
       ],
     );

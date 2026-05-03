@@ -71,7 +71,7 @@ class ShiftData {
   static const Shift go5 = Shift(
     code: 'GO5',
     color: Color(0xFFD84315),
-    startTime: '08:00',
+    startTime: '11:00',
     endTime: '17:00',
   );
 
