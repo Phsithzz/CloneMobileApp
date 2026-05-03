@@ -66,7 +66,7 @@ class CalendarDayPanel extends StatelessWidget {
 
 class _DayPanelHeader extends StatelessWidget {
   final String dateLabel;
-  final ShiftModel? shift;
+  final Shift? shift;
   final VoidCallback onShiftTap;
 
   const _DayPanelHeader({

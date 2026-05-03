@@ -1,11 +1,11 @@
-part of 'calendar_bloc.dart'; // ← แก้ตรงนี้
+part of 'calendar_bloc.dart';
 
 class CalendarState extends Equatable {
   final int year;
   final int month;
   final DateTime? selectedDate;
-  final List<CalendarDay> days; // all days in grid (including prev/next month)
-  final Map<String, CalendarDay> dayMap; // key: 'yyyy-MM-dd'
+  final List<CalendarDay> days;
+  final Map<String, CalendarDay> dayMap;
   final bool isLoading;
 
   const CalendarState({
@@ -29,7 +29,8 @@ class CalendarState extends Equatable {
     return CalendarState(
       year: year ?? this.year,
       month: month ?? this.month,
-      selectedDate: clearSelected ? null : (selectedDate ?? this.selectedDate),
+      selectedDate:
+          clearSelected ? null : (selectedDate ?? this.selectedDate),
       days: days ?? this.days,
       dayMap: dayMap ?? this.dayMap,
       isLoading: isLoading ?? this.isLoading,
@@ -38,13 +39,10 @@ class CalendarState extends Equatable {
 
   CalendarDay? get selectedDay {
     if (selectedDate == null) return null;
-    final key = _dateKey(selectedDate!);
-    return dayMap[key];
+    return dayMap[DateKeyUtil.fromDateTime(selectedDate!)];
   }
 
-  static String _dateKey(DateTime d) =>
-      '${d.year}-${d.month.toString().padLeft(2, '0')}-${d.day.toString().padLeft(2, '0')}';
-
   @override
-  List<Object?> get props => [year, month, selectedDate, days, isLoading];
+  // Fix: เพิ่ม dayMap เข้า props ให้ครบ
+  List<Object?> get props => [year, month, selectedDate, days, dayMap, isLoading];
 }
