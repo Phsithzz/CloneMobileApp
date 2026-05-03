@@ -1,5 +1,5 @@
 import 'package:clone_mobile_app/components/social_button.dart';
-import 'package:clone_mobile_app/screens/colors/login_color.dart';
+import 'package:clone_mobile_app/screens/colors/home_color.dart';
 import 'package:clone_mobile_app/screens/invite_page.dart';
 import 'package:clone_mobile_app/screens/pin_page.dart';
 import 'package:flutter/material.dart';
@@ -87,7 +87,7 @@ class _LoginPageState extends State<LoginPage> {
                             IconButton(
                               onPressed: _navigateToInvite,
                               icon: Icon(Icons.arrow_back_ios),
-                              color: LoginColor.primary,
+                              color: HomeColor.primary,
                             ),
 
                             Row(
@@ -141,7 +141,7 @@ class _LoginPageState extends State<LoginPage> {
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(6),
                               borderSide: const BorderSide(
-                                color: LoginColor.border,
+                                color: HomeColor.border,
                                 width: 1.5,
                               ),
                             ),
@@ -149,7 +149,7 @@ class _LoginPageState extends State<LoginPage> {
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(6),
                               borderSide: const BorderSide(
-                                color: LoginColor.border,
+                                color: HomeColor.border,
                                 width: 1.5,
                               ),
                             ),
@@ -157,7 +157,7 @@ class _LoginPageState extends State<LoginPage> {
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(6),
                               borderSide: const BorderSide(
-                                color: LoginColor.primary,
+                                color: HomeColor.primary,
                                 width: 2,
                               ),
                             ),
@@ -197,7 +197,7 @@ class _LoginPageState extends State<LoginPage> {
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(6),
                               borderSide: const BorderSide(
-                                color: LoginColor.border,
+                                color: HomeColor.border,
                                 width: 1.5,
                               ),
                             ),
@@ -205,7 +205,7 @@ class _LoginPageState extends State<LoginPage> {
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(6),
                               borderSide: const BorderSide(
-                                color: LoginColor.border,
+                                color: HomeColor.border,
                                 width: 1.5,
                               ),
                             ),
@@ -213,7 +213,7 @@ class _LoginPageState extends State<LoginPage> {
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(6),
                               borderSide: const BorderSide(
-                                color: LoginColor.primary,
+                                color: HomeColor.primary,
                                 width: 2,
                               ),
                             ),
@@ -230,7 +230,7 @@ class _LoginPageState extends State<LoginPage> {
                             onPressed: () {},
                             child: const Text(
                               "Forgot password?",
-                              style: TextStyle(color: LoginColor.primary),
+                              style: TextStyle(color: HomeColor.primary),
                             ),
                           ),
                         ),
@@ -247,7 +247,7 @@ class _LoginPageState extends State<LoginPage> {
                             },
 
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: LoginColor.primary,
+                              backgroundColor: HomeColor.primary,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(8),
                               ),
@@ -272,7 +272,7 @@ class _LoginPageState extends State<LoginPage> {
                             Expanded(
                               child: Divider(
                                 thickness: 2,
-                                color: LoginColor.border,
+                                color: HomeColor.border,
                               ),
                             ),
 
@@ -291,7 +291,7 @@ class _LoginPageState extends State<LoginPage> {
                             Expanded(
                               child: Divider(
                                 thickness: 2,
-                                color: LoginColor.border,
+                                color: HomeColor.border,
                               ),
                             ),
                           ],

@@ -1,5 +1,5 @@
 import 'package:clone_mobile_app/screens/bottom_nav_page.dart';
-import 'package:clone_mobile_app/screens/colors/pin_color.dart';
+import 'package:clone_mobile_app/screens/colors/home_color.dart';
 import 'package:flutter/material.dart';
 
 class PinPage extends StatefulWidget {
@@ -121,7 +121,7 @@ class _PinPageState extends State<PinPage> {
                       const Icon(
                         Icons.lock_outline,
                         size: 50,
-                        color: PinColor.primary,
+                        color: HomeColor.primary,
                       ),
 
                       const SizedBox(height: 30),
@@ -147,7 +147,7 @@ class _PinPageState extends State<PinPage> {
                               color: _isError
                                   ? Colors.red
                                   : index < _pin.length
-                                  ? PinColor.primary
+                                  ? HomeColor.primary
                                   : Colors.transparent,
                             ),
                           );

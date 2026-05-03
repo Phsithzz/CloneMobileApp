@@ -1,4 +1,4 @@
-import 'package:clone_mobile_app/screens/colors/invite_color.dart';
+import 'package:clone_mobile_app/screens/colors/home_color.dart';
 import 'package:clone_mobile_app/screens/login_page.dart';
 import 'package:flutter/material.dart';
 
@@ -95,7 +95,7 @@ class _InvitePageState extends State<InvitePage> {
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(6),
                     borderSide: const BorderSide(
-                      color: InviteColors.border,
+                      color: HomeColor.border,
                       width: 1.5,
                     ),
                   ),
@@ -103,7 +103,7 @@ class _InvitePageState extends State<InvitePage> {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(6),
                     borderSide: const BorderSide(
-                      color: InviteColors.border,
+                      color: HomeColor.border,
                       width: 1.5,
                     ),
                   ),
@@ -111,7 +111,7 @@ class _InvitePageState extends State<InvitePage> {
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(6),
                     borderSide: const BorderSide(
-                      color: InviteColors.primary,
+                      color: HomeColor.primary,
                       width: 2,
                     ),
                   ),
@@ -134,7 +134,7 @@ class _InvitePageState extends State<InvitePage> {
                     _onConfirm();
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: InviteColors.primary,
+                    backgroundColor: HomeColor.primary,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
@@ -163,7 +163,7 @@ class _InvitePageState extends State<InvitePage> {
                   "Skip",
                   style: TextStyle(
                     fontSize: 14,
-                    color: InviteColors.primary,
+                    color: HomeColor.primary,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
