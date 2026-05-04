@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../model/shift_model.dart';
-import '../../utils/color_util.dart';
+import 'package:clone_mobile_app/model/shift_model.dart';
+import 'package:clone_mobile_app/utils/color_util.dart';
 
 class CalendarDayCell extends StatelessWidget {
   final CalendarDay day;
@@ -26,13 +26,11 @@ class CalendarDayCell extends StatelessWidget {
     // Base background color
     Color bgColor;
     if (isOff) {
-      bgColor = day.isHoliday
-          ? const Color(0xFFF5F5F5)
-          : Colors.white;
+      bgColor = day.isHoliday ? const Color(0xFFF5F5F5) : Colors.white;
     } else {
       bgColor = isCurrentMonth
           ? shift.color
-          : shift.color.withValues(alpha:0.5);
+          : shift.color.withValues(alpha: 0.5);
     }
 
     final textColor = isOff
@@ -50,15 +48,15 @@ class CalendarDayCell extends StatelessWidget {
           border: isSelected
               ? Border.all(color: Colors.black87, width: 2)
               : isToday
-                  ? Border.all(color: Colors.black54, width: 1.5)
-                  : null,
+              ? Border.all(color: Colors.black54, width: 1.5)
+              : null,
           boxShadow: isSelected
               ? [
                   BoxShadow(
-                    color: Colors.black.withValues(alpha:0.15),
+                    color: Colors.black.withValues(alpha: 0.15),
                     blurRadius: 4,
                     offset: const Offset(0, 2),
-                  )
+                  ),
                 ]
               : null,
         ),
@@ -78,7 +76,7 @@ class CalendarDayCell extends StatelessWidget {
                     decoration: isToday && !isSelected
                         ? BoxDecoration(
                             shape: BoxShape.circle,
-                            color: textColor.withValues(alpha:0.15),
+                            color: textColor.withValues(alpha: 0.15),
                           )
                         : null,
                     alignment: Alignment.center,
@@ -86,12 +84,10 @@ class CalendarDayCell extends StatelessWidget {
                       '${day.date.day}',
                       style: TextStyle(
                         fontSize: 10,
-                        fontWeight: isToday
-                            ? FontWeight.bold
-                            : FontWeight.w500,
+                        fontWeight: isToday ? FontWeight.bold : FontWeight.w500,
                         color: isCurrentMonth
                             ? textColor
-                            : textColor.withValues(alpha:0.4),
+                            : textColor.withValues(alpha: 0.4),
                       ),
                     ),
                   ),
@@ -108,7 +104,7 @@ class CalendarDayCell extends StatelessWidget {
                   fontWeight: FontWeight.w700,
                   color: isCurrentMonth
                       ? textColor
-                      : textColor.withValues(alpha:0.4),
+                      : textColor.withValues(alpha: 0.4),
                   letterSpacing: 0.3,
                 ),
               ),
@@ -179,6 +175,10 @@ class CalendarDayCell extends StatelessWidget {
         break;
     }
 
-    return Icon(icon, size: 8, color: iconColor.withValues(alpha: isCurrentMonth ? 1 : 0.5));
+    return Icon(
+      icon,
+      size: 8,
+      color: iconColor.withValues(alpha: isCurrentMonth ? 1 : 0.5),
+    );
   }
 }
